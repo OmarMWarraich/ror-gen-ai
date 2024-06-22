@@ -67,3 +67,6 @@ group :test do
 end
 
 gem "dotenv-rails", "~> 2.8", :groups => [:development, :test]
+
+gem "bootstrap", "~> 5.3"
+gem "sassc-rails", "~> 2.1"
