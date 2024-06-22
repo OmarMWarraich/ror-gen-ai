@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
 
+  def authenticate_user!
+    redirect_to new_session_path, alert: "You need to sign in" unless user_signed_in?
+  end
+
   def login(user)
     Current.user = user
     reset_session
