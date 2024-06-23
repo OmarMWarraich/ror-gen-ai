@@ -47,4 +47,27 @@
   <div class="mb-2 text-center">
     <%= form.submit "Generate", class: "btn btn-primary" %>
   </div>
+
+  <div class="container"  data-controller="random-seed toggle">
+    <div class="row mb-2">
+      <div class="col-3 pt-1">
+        <%= form.label :seed, "Seed", class: "form-label" %>
+      </div>
+      <div class="col-9">
+        <%= form.number_field :seed, in: -1..9999999999, class: "form-control", data: { random_seed_target: "inputField", toggle_target: "inputField" } %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+        <button type="button" class="btn btn-sm pt-2" data-action="click->random-seed#populate" data-random-seed-target="button">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
+      <div class="col-10 pt-2">
+        <%= form.check_box :random_seed, class: "form-check-input", data: { toggle_target: "toggle", action: "change->toggle#toggle" } %>
+        <%= form.label :random_seed, "Random Number", class: "form-check-label fs-6" %>
+      </div>
+    </div>
+  </div>
+
 <% end %>
