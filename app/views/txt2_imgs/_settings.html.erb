@@ -1,0 +1,50 @@
+<%= form_with(model: ImageMaker.new, url: txt2_imgs_path, method: :post) do |form|%>
+  <div class='row mb-2'>
+    <div class='col-2'>
+      <%= form.label :style_template, "Style", class: "form-label" %>
+    </div>
+    <div class='col'>
+      <%= form.select :style_template, [], {}, {class: "form-select w-100"} %>
+    </div>
+  </div>
+
+  <div class='row mb-2'>
+    <div class='col-2'>
+      <%= form.label :sd_model, "Model", class: "form-label" %>
+    </div>
+    <div class='col'>
+      <%= form.select :sd_model, [], {}, {class: "form-select w-100"} %>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <%= form.text_area :prompt, placeholder: "Prompt", size: "70x5", class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.text_area :negative_prompt, placeholder: "Negative Prompt (optional)", size: "70x5", class: "form-control" %>
+  </div>
+
+  <div class='row mb-2'>
+    <div class='col'>
+      <div class="btn-group w-100 d-flex" role="group" aria-label="Basic radio toggle button group">
+        <%= form.radio_button :aspect_ratio, "3:2", class: 'btn-check' %>
+        <%= form.label :aspect_ratio_32, class: "btn btn-outline-default" do %>
+          <i class='fas fa-regular fa-rectangle-wide'></i> 3:2
+        <% end %>
+        <%= form.radio_button :aspect_ratio, "1:1", class: 'btn-check', checked: true %>
+        <%= form.label :aspect_ratio_11, class: "btn btn-outline-default" do %>
+          <i class='fas fa-regular fa-square'></i> 1:1
+        <% end %>
+        <%= form.radio_button :aspect_ratio, "2:3", class: 'btn-check' %>
+        <%= form.label :aspect_ratio_23, class: "btn btn-outline-default" do %>
+          <i class='fas fa-regular fa-rectangle-vertical'></i> 2:3
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-2 text-center">
+    <%= form.submit "Generate", class: "btn btn-primary" %>
+  </div>
+<% end %>
