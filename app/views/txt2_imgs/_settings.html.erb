@@ -1,0 +1,73 @@
+<%= form_with(model: ImageMaker.new, url: txt2_imgs_path, method: :post) do |form|%>
+  <div class='row mb-2'>
+    <div class='col-2'>
+      <%= form.label :style_template, "Style", class: "form-label" %>
+    </div>
+    <div class='col'>
+      <%= form.select :style_template, [], {}, {class: "form-select w-100"} %>
+    </div>
+  </div>
+
+  <div class='row mb-2'>
+    <div class='col-2'>
+      <%= form.label :sd_model, "Model", class: "form-label" %>
+    </div>
+    <div class='col'>
+      <%= form.select :sd_model, [], {}, {class: "form-select w-100"} %>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <%= form.text_area :prompt, placeholder: "Prompt", size: "70x5", class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.text_area :negative_prompt, placeholder: "Negative Prompt (optional)", size: "70x5", class: "form-control" %>
+  </div>
+
+  <div class='row mb-2'>
+    <div class='col'>
+      <div class="btn-group w-100 d-flex" role="group" aria-label="Basic radio toggle button group">
+        <%= form.radio_button :aspect_ratio, "3:2", class: 'btn-check' %>
+        <%= form.label :aspect_ratio_32, class: "btn btn-outline-default" do %>
+          <i class='fas fa-regular fa-rectangle-wide'></i> 3:2
+        <% end %>
+        <%= form.radio_button :aspect_ratio, "1:1", class: 'btn-check', checked: true %>
+        <%= form.label :aspect_ratio_11, class: "btn btn-outline-default" do %>
+          <i class='fas fa-regular fa-square'></i> 1:1
+        <% end %>
+        <%= form.radio_button :aspect_ratio, "2:3", class: 'btn-check' %>
+        <%= form.label :aspect_ratio_23, class: "btn btn-outline-default" do %>
+          <i class='fas fa-regular fa-rectangle-vertical'></i> 2:3
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-2 text-center">
+    <%= form.submit "Generate", class: "btn btn-primary" %>
+  </div>
+
+  <div class="container"  data-controller="random-seed toggle">
+    <div class="row mb-2">
+      <div class="col-3 pt-1">
+        <%= form.label :seed, "Seed", class: "form-label" %>
+      </div>
+      <div class="col-9">
+        <%= form.number_field :seed, in: -1..9999999999, class: "form-control", data: { random_seed_target: "inputField", toggle_target: "inputField" } %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+        <button type="button" class="btn btn-sm pt-2" data-action="click->random-seed#populate" data-random-seed-target="button">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
+      <div class="col-10 pt-2">
+        <%= form.check_box :random_seed, class: "form-check-input", data: { toggle_target: "toggle", action: "change->toggle#toggle" } %>
+        <%= form.label :random_seed, "Random Number", class: "form-check-label fs-6" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
