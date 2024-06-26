@@ -13,7 +13,7 @@
       <%= form.label :sd_model, "Model", class: "form-label" %>
     </div>
     <div class='col'>
-      <%= form.select :sd_model, [], {}, {class: "form-select w-100"} %>
+      <%= form.select :sd_model, @models.sort, {}, {class: "form-select w-100"} %>
     </div>
   </div>
 
