@@ -4,7 +4,7 @@
       <%= form.label :style_template, "Style", class: "form-label" %>
     </div>
     <div class='col'>
-      <%= form.select :style_template, [], {}, {class: "form-select w-100"} %>
+      <%= form.select :style_template, @styles.map { |s| [s[:name].titleize, s[:name]] }.sort, { include_blank: true }, {class: "form-select w-100"} %>
     </div>
   </div>
 
