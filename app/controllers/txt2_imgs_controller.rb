@@ -53,10 +53,14 @@ class Txt2ImgsController < ApplicationController
   respond_to do |format|
     format.turbo_stream do
       render turbo_stream: turbo_stream.replace(
+        'process_starting',
+        partial: '/txt2_imgs/process_starting'
+      ) +
+      turbo_stream.replace(
         'image_maker',
-        partial: 'txt2_imgs/image_maker',
+        partial: '/txt2_imgs/image_maker',
         locals: {
-          render_result: render_result
+          render_result: render_result,
         }
       )
     end

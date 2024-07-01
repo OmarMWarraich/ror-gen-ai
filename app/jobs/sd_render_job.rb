@@ -14,6 +14,13 @@ class SdRenderJob < ApplicationJob
 
     api_instance = RStableDiffusionAI::DefaultApi.new(client)
 
+    our_task_id = "task(#{rand(36**5...36**6).to_s(36)}#{rand(36**5...36**6).to_s(36)}#{rand(36**5...36**6).to_s(36)})"
+
+    render_settings[:task_id] = our_task_id
+    render_settings[:id_task] = our_task_id
+
+    ImgProgressJob.perform_later(our_task_id, user_id, original_prompt, style_template)
+
     result = api_instance.text2imgapi_sdapi_v1_txt2img_post(render_settings)
 
   end

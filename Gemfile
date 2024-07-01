@@ -58,6 +58,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "annotate"
+  gem "letter_opener"
 end
 
 group :test do
@@ -73,3 +75,5 @@ gem "sassc-rails", "~> 2.1"
 gem 'font-awesome-sass', '~> 5.15.1'
 
 gem 'ruby-stableDiffusion', path: '/home/owa/Docs/ror/ruby-stablediffusion/'
+
+gem "sidekiq"
