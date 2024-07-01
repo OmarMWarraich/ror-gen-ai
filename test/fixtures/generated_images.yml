@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prompt: MyString
+  negative_prompt: MyString
+  style_template: MyString
+  user: one
+  info: 
+  parameters: 
+
+two:
+  prompt: MyString
+  negative_prompt: MyString
+  style_template: MyString
+  user: two
+  info: 
+  parameters: 

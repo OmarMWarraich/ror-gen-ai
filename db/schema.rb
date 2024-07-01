@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_214248) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_01_221718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_214248) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "generated_images", force: :cascade do |t|
+    t.string "prompt"
+    t.string "negative_prompt"
+    t.string "style_template"
+    t.bigint "user_id", null: false
+    t.json "info"
+    t.json "parameters"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_generated_images_on_user_id"
+  end
+
   create_table "progress_holders", force: :cascade do |t|
     t.string "task_ref"
     t.integer "live_preview_id"
@@ -61,5 +73,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_214248) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "generated_images", "users"
   add_foreign_key "progress_holders", "users"
 end
