@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_ref: MyString
+  live_preview_id: 1
+  user: one
+
+two:
+  task_ref: MyString
+  live_preview_id: 1
+  user: two
