@@ -6,8 +6,13 @@
       </div>
     </div>
     <div class='col-md-7'>
-      <div id='image_holder' class='text-center card h-100 p-2 bg-dark'>
-        
+      <div id='image_holder' class='text-center card h-100 p-2'>
+        <%# turbo_stream_from "#{dom_id(current_user)}_main_image" %>
+        <turbo-frame id="full_image_area">
+          <turbo-frame id="image_maker">
+            This will be replaced by the image maker
+          </turbo-frame>
+        </turbo-frame>
       </div>
     </div>
     <div class='col-md-2'>

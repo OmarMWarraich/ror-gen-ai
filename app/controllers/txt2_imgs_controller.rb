@@ -42,16 +42,30 @@ class Txt2ImgsController < ApplicationController
       sampler_name: 'DPM++ 2M Karras',
       width: width,
       height: height,
+      steps: image_create_params[:steps],
       override_settings: { sd_model_checkpoint: image_create_params.delete(:sd_model) }
   }.deep_symbolize_keys
 
   Rails.logger.info("sd_settings: #{sd_settings}")
   # new_settings = image_create_params.to_h.deep_symbolize_keys.merge(sd_settings)
+  render_result = SdRenderJob.perform_now(sd_settings, current_user.id)
+
+  respond_to do |format|
+    format.turbo_stream do
+      render turbo_stream: turbo_stream.replace(
+        'image_maker',
+        partial: 'txt2_imgs/image_maker',
+        locals: {
+          render_result: render_result
+        }
+      )
+    end
+  end
   end
 
   private
 
   def image_create_params
-    params.require(:image_maker).permit(:style_template, :prompt, :negative_prompt, :sd_model, :aspect_ratio)
+    params.require(:image_maker).permit(:style_template, :prompt, :negative_prompt, :sd_model, :aspect_ratio, :steps)
   end
 end
