@@ -23,7 +23,7 @@
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <% if user_signed_in? %>
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="/account" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <%= current_user.email.gsub(/@.*/, '') %>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">

@@ -1,0 +1,14 @@
+<div class="vh-100 d-flex justify-content-center align-items-center">
+  <div class='text-center'>
+    <div class='card mb-2'>
+      <div class='card-body'>
+        <h5 class='card-title'>Your Subscription</h5>
+        <p class='card-text'>You are currently subscribed and your account will renew on:</p>
+        <p class='card-text'><%= current_user.subscriptions.active.first.paid_until.strftime('%B %d, %Y') %></p>
+      </div>
+    </div>
+    <section>
+      <%= button_to 'Manage Account', create_portal_session_path, data: {turbo: false}, class: 'btn btn-primary' %>
+    </section>
+  </div>
+</div>

@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  get "account" => "account_manager#index", as: :account_manager
+  post '/create_portal_session' => 'account_manager#create_portal_session', as: :create_portal_session
+
+  post "stripe_webhook" => "stripe_webhooks#webhook"
+
   get "pricing" => "subscriptions#index"
-  post "/create_checkout_session" => "subscriptions#create_checkout_session", as: :create_checkout_session
+  post "create_checkout_session" => "subscriptions#create_checkout_session", as: :create_checkout_session
   get "success" => "subscriptions#success"
 
-
+  mount Sidekiq::Web => "/sidekiq"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resource :session # where login and logout routes are defined

@@ -22,7 +22,7 @@ class SubscriptionsController < ApplicationController
                                                   quantity: 1,
                                                   price: prices.data[0].id
                                                 }],
-                                                success_url: "http://localhost:3000" + '/success.html?session_id={CHECKOUT_SESSION_ID}',
+                                                success_url: "https://#{ENV.fetch("DOMAIN")}/success.html?session_id={CHECKOUT_SESSION_ID}",
                                                 cancel_url: root_url,
     })
 
