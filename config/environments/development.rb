@@ -89,4 +89,4 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 end
 
-Rails.application.default_url_options = { host: "localhost", port: 3000 }
+Rails.application.routes.default_url_options = { host: "localhost", port: 3000 }

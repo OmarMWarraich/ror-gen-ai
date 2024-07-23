@@ -77,3 +77,5 @@ gem 'font-awesome-sass', '~> 5.15.1'
 gem 'ruby-stableDiffusion', path: '/home/owa/Docs/ror/ruby-stablediffusion/'
 
 gem "sidekiq"
+
+gem "ruby-vips", "~> 2.2"

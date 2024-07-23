@@ -2,8 +2,6 @@ class SdRenderJob < ApplicationJob
   queue_as :default
 
   def perform(render_settings, user_id)
-    original_prompt = render_settings.delete(:original_prompt)
-    style_template = render_settings.delete(:style_template)
 
     config = RStableDiffusionAI::Configuration.new
     config.host = ENV['SD_API_HOST']
@@ -19,9 +17,12 @@ class SdRenderJob < ApplicationJob
     render_settings[:task_id] = our_task_id
     render_settings[:id_task] = our_task_id
 
-    ImgProgressJob.perform_later(our_task_id, user_id, original_prompt, style_template)
+    ImgProgressJob.perform_later(our_task_id, user_id, render_settings[:original_prompt], render_settings[:style_template])
 
-    result = api_instance.text2imgapi_sdapi_v1_txt2img_post(render_settings)
+    result = api_instance.text2imgapi_sdapi_v1_txt2img_post(render_settings.except(:original_prompt, :style_template))
 
+    GeneratedImage.create_from_sd_render_job(render_settings, user_id, result)
+
+    result
   end
 end
