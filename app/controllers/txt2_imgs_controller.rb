@@ -16,6 +16,8 @@ class Txt2ImgsController < ApplicationController
 
     result = api_instance.get_sd_models_sdapi_v1_sd_models_get
     @models = result.map { |model| model.model_name }
+
+    @gallery = current_user.generated_images.order(created_at: :desc).limit(30)
   end
 
   def create

@@ -29,6 +29,12 @@ class GeneratedImage < ApplicationRecord
   after_create_commit { broadcast_created }
 
   def broadcast_created
+    broadcast_to_main_image
+
+    broadcast_to_gallery
+  end
+
+  def broadcast_to_main_image
     broadcast_update_to(
       "#{dom_id(user)}_main_image",
       partial: "generated_images/display_main_image",
@@ -37,6 +43,18 @@ class GeneratedImage < ApplicationRecord
         generated_image: self
       },
       target: "image_maker"
+    )
+  end
+
+  def broadcast_to_gallery
+    broadcast_prepend_to(
+      "#{dom_id(user)}_gallery",
+      partial: "/txt2_imgs/gallery",
+      locals: {
+        scroll_to: true,
+        gallery: self
+      },
+      target: "main_gallery"
     )
   end
 
