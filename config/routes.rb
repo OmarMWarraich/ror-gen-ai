@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pricing' => 'subscriptions#index'
+  get 'subscriptions/success'
   # get 'generated_images/show'
   # get 'txt2_imgs/index'
   # get 'sessions/new'
