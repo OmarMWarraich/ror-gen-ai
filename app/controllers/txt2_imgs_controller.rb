@@ -37,6 +37,7 @@ class Txt2ImgsController < ApplicationController
 
     sd_settings = {
       original_prompt: image_create_params[:prompt],
+      style_template: image_create_params[:style_template],
       prompt: merged_prompt,
       negative_prompt: merged_negative_prompt,
       sampler_name: 'DPM++ 2M Karras',
@@ -55,13 +56,6 @@ class Txt2ImgsController < ApplicationController
       render turbo_stream: turbo_stream.replace(
         'process_starting',
         partial: '/txt2_imgs/process_starting'
-      ) +
-      turbo_stream.replace(
-        'image_maker',
-        partial: '/txt2_imgs/image_maker',
-        locals: {
-          render_result: render_result,
-        }
       )
     end
   end

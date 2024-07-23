@@ -1,18 +1,20 @@
 # == Schema Information
 #
-# Table name: progress_holders
+# Table name: generated_images
 #
 #  id              :bigint           not null, primary key
-#  task_ref        :string
+#  info            :json
+#  negative_prompt :string
+#  parameters      :json
+#  prompt          :string
+#  style_template  :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  live_preview_id :integer
 #  user_id         :bigint           not null
 #
 # Indexes
 #
-#  index_progress_holders_on_task_ref  (task_ref) UNIQUE
-#  index_progress_holders_on_user_id   (user_id)
+#  index_generated_images_on_user_id  (user_id)
 #
 # Foreign Keys
 #
@@ -20,7 +22,7 @@
 #
 require "test_helper"
 
-class ProgressHolderTest < ActiveSupport::TestCase
+class GeneratedImageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

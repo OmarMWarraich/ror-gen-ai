@@ -248,6 +248,9 @@ GEM
       io-console (~> 0.5)
     rexml (3.3.0)
       strscan
+    ruby-vips (2.2.2)
+      ffi (~> 1.12)
+      logger
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -329,6 +332,7 @@ DEPENDENCIES
   rails (~> 7.1.3, >= 7.1.3.4)
   redis (>= 4.0.1)
   ruby-stableDiffusion!
+  ruby-vips (~> 2.2)
   sassc-rails (~> 2.1)
   selenium-webdriver
   sidekiq
