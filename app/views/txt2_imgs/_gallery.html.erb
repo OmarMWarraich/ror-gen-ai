@@ -2,8 +2,12 @@
   <div class='row'>
     <div class='col'>
       <%= link_to generated_image_path(gallery), method: :get, data: { turbo_frame: 'image_maker' } do %>
-        <%= image_tag gallery.sketch, class: 'img-thumbnail', alt: gallery.info, title: gallery.prompt %>
+        <%= image_tag gallery.sketch.variant(:thumb), class: 'img-thumbnail', alt: gallery.info, title: gallery.prompt %>
       <% end %>
     </div>
   </div>
+  <%= button_to gallery, method: :delete, data: { turbo_confirm: "Do you really want to delete this image?" }, 
+                          class: 'position-absolute bottom-0 end-0 m-0 btn-transparent', style: 'padding: 10px' do %>
+    <i class="fa-solid fa-trash-can"></i>
+  <% end %>
 </div>

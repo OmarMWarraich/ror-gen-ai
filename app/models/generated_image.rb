@@ -24,7 +24,9 @@ class GeneratedImage < ApplicationRecord
   include ActionView::RecordIdentifier
 
   belongs_to :user
-  has_one_attached :sketch
+  has_one_attached :sketch do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end
 
   after_create_commit { broadcast_created }
 

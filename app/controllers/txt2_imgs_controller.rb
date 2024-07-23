@@ -8,14 +8,19 @@ class Txt2ImgsController < ApplicationController
     config = RStableDiffusionAI::Configuration.new
     config.host = ENV['SD_API_HOST']
     config.scheme = ENV['SD_API_SCHEME']
-    config.debugging = true
+    config.timeout = 15
+    # config.debugging = true
 
     client = RStableDiffusionAI::ApiClient.new(config)
 
-    api_instance = RStableDiffusionAI::DefaultApi.new(client)
-
-    result = api_instance.get_sd_models_sdapi_v1_sd_models_get
-    @models = result.map { |model| model.model_name }
+    begin
+      api_instance = RStableDiffusionAI::DefaultApi.new(client)
+      result = api_instance.get_sd_models_sdapi_v1_sd_models_get
+      @models = result.map { |model| model.model_name }
+    rescue StandardError
+      Rails.logger.error "failed to get models"
+      @models = []
+    end
 
     @gallery = current_user.generated_images.order(created_at: :desc).limit(30)
   end
