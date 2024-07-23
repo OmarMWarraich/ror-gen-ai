@@ -1,0 +1,9 @@
+<div id="<%= dom_id(gallery)%>" class="col-4 mb-1 p-0 position-relative">
+  <div class='row'>
+    <div class='col'>
+      <%= link_to generated_image_path(gallery), method: :get, data: { turbo_frame: 'image_maker' } do %>
+        <%= image_tag gallery.sketch, class: 'img-thumbnail', alt: gallery.info, title: gallery.prompt %>
+      <% end %>
+    </div>
+  </div>
+</div>

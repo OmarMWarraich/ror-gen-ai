@@ -17,7 +17,10 @@
     </div>
     <div class='col-md-2'>
       <h5 class='border-bottom pb-2 mb-2'><i class="fas fa-duotone fa-images"></i> Gallery</h5>
-      
+      <%= turbo_stream_from "#{dom_id(current_user)}_gallery" %>
+      <div id="main_gallery" class="row">
+        <%= render partial: '/txt2_imgs/gallery', collection: @gallery %>
+      </div>
     </div>
   </div>
 </div>

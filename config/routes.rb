@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # get 'generated_images/show'
   # get 'txt2_imgs/index'
   # get 'sessions/new'
   # get 'registrations/new'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   resource :password_reset # where password reset routes are defined
   resource :password_change # where password change routes are defined
   resource :txt2_imgs, only: [:index, :create] # where the main app routes are defined
+  resources :generated_images, only: [:show] # where the generated images routes are defined
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
