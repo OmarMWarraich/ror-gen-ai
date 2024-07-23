@@ -1,0 +1,15 @@
+
+
+<div class="vh-100 d-flex justify-content-center align-items-center">
+  <div class="text-center">
+    <section>
+      <div class="product">
+        <div class="description">
+          <h3>Basic plan</h3>
+          <h5>$10.00 / month</h5>
+        </div>
+      </div>
+       <%= button_to "Signup", create_checkout_session_path(lookup_key: "image_gen_basic"), data: { turbo: false }, class: "btn btn-primary" %>
+    </section>
+  </div>
+</div>

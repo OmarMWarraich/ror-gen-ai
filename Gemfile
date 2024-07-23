@@ -79,3 +79,5 @@ gem 'ruby-stableDiffusion', path: '/home/owa/Docs/ror/ruby-stablediffusion/'
 gem "sidekiq"
 
 gem "ruby-vips", "~> 2.2"
+
+gem "stripe", "~> 12.3"
