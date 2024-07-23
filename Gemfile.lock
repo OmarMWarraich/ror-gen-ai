@@ -1,5 +1,6 @@
-PATH
-  remote: /home/owa/Docs/ror/ruby-stablediffusion
+GIT
+  remote: https://github.com/OmarMWarraich/ruby-stablediffusion.git
+  revision: baaaf4b3743a1dab615168bd750868204f347970
   specs:
     ruby-stableDiffusion (0.1.0)
       json (~> 2.1, >= 2.1.0)
