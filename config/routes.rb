@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get 'pricing' => 'subscriptions#index'
-  get 'subscriptions/success'
-  # get 'generated_images/show'
-  # get 'txt2_imgs/index'
-  # get 'sessions/new'
-  # get 'registrations/new'
-  # get 'home/index'
+  get "pricing" => "subscriptions#index"
+  post "/create_checkout_session" => "subscriptions#create_checkout_session", as: :create_checkout_session
+  get "success" => "subscriptions#success"
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resource :session # where login and logout routes are defined

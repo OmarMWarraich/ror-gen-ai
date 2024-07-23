@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_221718) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_23_185845) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,15 +64,31 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_221718) do
     t.index ["user_id"], name: "index_progress_holders_on_user_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "stripe_customer_ref"
+    t.string "stripe_subscription_ref"
+    t.datetime "next_invoice_on"
+    t.datetime "paid_until"
+    t.bigint "user_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stripe_subscription_ref"], name: "index_subscriptions_on_stripe_subscription_ref", unique: true
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "stripe_customer_ref"
+    t.index ["stripe_customer_ref"], name: "index_users_on_stripe_customer_ref", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "generated_images", "users"
   add_foreign_key "progress_holders", "users"
+  add_foreign_key "subscriptions", "users"
 end
