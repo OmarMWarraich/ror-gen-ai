@@ -82,3 +82,5 @@ gem "sidekiq"
 gem "ruby-vips", "~> 2.2"
 
 gem "stripe", "~> 12.3"
+
+gem "mini_racer"

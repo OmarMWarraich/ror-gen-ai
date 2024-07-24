@@ -88,5 +88,6 @@ test:
 production:
   <<: *default
   database: ror_gen_ai_production
-  username: ror_gen_ai
+  username: postgres
   password: <%= ENV["ROR_GEN_AI_DATABASE_PASSWORD"] %>
+  host: <%= ENV["ROR_GEN_AI_DATABASE_HOST"] %>

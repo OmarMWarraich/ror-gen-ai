@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   post "create_checkout_session" => "subscriptions#create_checkout_session", as: :create_checkout_session
   get "success" => "subscriptions#success"
 
-  mount Sidekiq::Web => "/sidekiq"
+
+  if defined?(Sidekiq::Web)
+    mount Sidekiq::Web => "/sidekiq"
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resource :session # where login and logout routes are defined
