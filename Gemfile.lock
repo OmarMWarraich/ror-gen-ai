@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/OmarMWarraich/ruby-stablediffusion.git
-  revision: baaaf4b3743a1dab615168bd750868204f347970
+  revision: 87a3422430710d757d1b2ad2b9e2ec11396ee030
+  ref: 87a3422
   specs:
     ruby-stableDiffusion (0.1.0)
       json (~> 2.1, >= 2.1.0)
