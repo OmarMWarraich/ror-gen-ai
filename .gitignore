@@ -35,3 +35,4 @@
 
 /config/credentials/development.key
 node_modules
+.ror-env
