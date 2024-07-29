@@ -8,8 +8,8 @@ class ImgProgressJob < ApplicationJob
     }
 
     config = RStableDiffusionAI::Configuration.new
-    config.host = ENV['SD_API_HOST']
-    config.scheme = ENV['SD_API_SCHEME']
+    config.host = ENV.fetch('SD_API_HOST')
+    config.scheme = ENV.fetch('SD_API_SCHEME')
     config.debugging = true
 
     client = RStableDiffusionAI::ApiClient.new(config)

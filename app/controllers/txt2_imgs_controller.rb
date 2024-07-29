@@ -6,8 +6,8 @@ class Txt2ImgsController < ApplicationController
     @styles = Styles.load
 
     config = RStableDiffusionAI::Configuration.new
-    config.host = ENV['SD_API_HOST']
-    config.scheme = ENV['SD_API_SCHEME']
+    config.host = ENV.fetch('SD_API_HOST')
+    config.scheme = ENV.fetch('SD_API_SCHEME')
     config.timeout = 15
     # config.debugging = true
 
