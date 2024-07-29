@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   get "account" => "account_manager#index", as: :account_manager
   post '/create_portal_session' => 'account_manager#create_portal_session', as: :create_portal_session
@@ -9,9 +11,10 @@ Rails.application.routes.draw do
   get "success" => "subscriptions#success"
 
 
-  if defined?(Sidekiq::Web)
-    mount Sidekiq::Web => "/sidekiq"
-  end
+  # if defined?(Sidekiq::Web)
+  #   mount Sidekiq::Web => "/sidekiq"
+  # end
+  mount Sidekiq::Web => "/sidekiq"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resource :session # where login and logout routes are defined
