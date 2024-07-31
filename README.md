@@ -159,7 +159,7 @@ rspec spec
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/OmarMWarraich/ror-gen-ai.git/issues/).
+Feel free to check the [issues page](https://github.com/OmarMWarraich/ror-gen-ai/issues/).
 
 ## Show your support
 
