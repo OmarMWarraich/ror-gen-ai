@@ -177,4 +177,4 @@ I would like to thank Phil Smy for his guidance and support throughout the proje
 
 ## 📝 License
 
-This project is [MIT](LICENSE) licensed.
+This project is [MIT](./LICENSE.md) licensed.
