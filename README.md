@@ -81,7 +81,7 @@ Artsmith is a web application that allows users to generate art using a generati
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- Due to the expensive nature of a compute intensive generative model, we are unable to provide a live demo at this time. However, the link to the video demo is available below.
+- Due to the expensive nature of a compute intensive gpu instance, we are unable to provide a live demo at this time considering the fact that this is just a demo project. However, the link to the video demo is available below.
 
 [Live Demo](https://youtu.be/HcN2TQhVp0Y)
 
