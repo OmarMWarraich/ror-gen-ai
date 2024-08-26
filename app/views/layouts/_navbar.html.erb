@@ -1,48 +1,104 @@
-<nav class="navbar navbar-expand-lg bg-primary navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand col-3" href="/">ArtSmith</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item mx-4">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link" href="/pricing">Pricing</a>
-          </li>
-        </ul>
-        <form class="d-flex me-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <% if user_signed_in? %>
-              <a class="nav-link dropdown-toggle" href="/account" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <%= current_user.email.gsub(/@.*/, '') %>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <%= link_to 'Edit Password', edit_password_change_path, class: 'dropdown-item' %>
-                <li><hr class="dropdown-divider"></li>
-                <%= link_to 'Log out', session_path, class: 'dropdown-item', data: { turbo_method: :delete } %>
-              </ul>
-            <% else %>
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sign In/ Sign Up
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:var(--bs-body-color)">
+  <div class="container-fluid">
+    <a class="navbar-brand col-3" href="/">ArtSmith</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-30 justify-content-between">
+        <li class="nav-item mx-4 rounded-3" style="background-color: var(--bs-success);">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item mx-4 rounded-3" style="background-color: var(--bs-success);">
+          <div data-controller="dropdown">
+            <a class="nav-link dropdown-toggle rounded-3" href="#" role="button" style="background-color: var(--bs-success);"
+        data-action="mouseenter->dropdown#showMenu mouseleave->dropdown#hideMenu"
+              data-bs-toggle="dropdown" aria-expanded="false"
+              data-dropdown-target="toggle">
+              Features
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" data-dropdown-target="menu"
+            data-action="mouseleave->dropdown#hideMenu" style="position: absolute; left: 0; width: 100vw;">
+              <% @features = [
+                    {
+                      name: "Text-to-Image",
+                      description: "Generates images from text prompts using Stable Diffusion models"
+                    },
+                    {
+                      name: "Image-to-Image",
+                      description: "Generate images based on an initial image and a text prompt using the img2img"
+                    },
+                    {
+                      name: "Outpainting",
+                      description: "Extend the canvas of an existing image by generating new content beyond the original borders"
+                    },
+                    {
+                      name: "Inpainting",
+                      description: "Remove or replace parts of an image by drawing on it with a brush"
+                    },
+                    {
+                      name: "Upscaling",
+                      description: "Increase the resolution and detail of generated images using AI-powered upscalers"
+                    },
+                    {
+                      name: "Prompt Matrix",
+                      description: "Generate multiple images by varying the prompt across a grid"
+                    }
+                  ] %>
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12 d-flex flex-wrap justify-content-center gap-4">
+                    <% @features.each do |i| %>
+                      <div class="card text-white bg-primary" style="min-width: 18rem; flex: 1 1 18rem;">
+                        <div class="card-header"><%= i[:name] %></div>
+                        <div class="card-body">
+                          <p class="card-text"><%= i[:description] %></p>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item mx-4 rounded-3" style="background-color: var(--bs-success);">
+          <a class="nav-link" href="/pricing">Pricing</a>
+        </li>
+      </ul>
+      <form class="d-flex me-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <% if user_signed_in? %>
+            <a class="nav-link dropdown-toggle rounded-3" href="/account" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: var(--bs-success);>
+              <%= current_user.email.gsub(/@.*/, '') %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <%= link_to 'Log In', new_session_path, class: 'dropdown-item' %>
+              <%= link_to 'Edit Password', edit_password_change_path, class: 'dropdown-item' %>
               <li><hr class="dropdown-divider"></li>
-              <%= link_to 'Sign Up', new_registration_path, class: 'dropdown-item' %>
+              <%= link_to 'Log out', session_path, class: 'dropdown-item', data: { turbo_method: :delete } %>
             </ul>
-            <% end %>
-          </li>
-        </ul>
-      </div>
+          <% else %>
+            <div data-controller="dropdown">
+              <a class="nav-link dropdown-toggle rounded-3" href="#" role="button" style="background-color: var(--bs-success);"
+                data-action="mouseenter->dropdown#showMenu mouseleave->dropdown#hideMenu"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                data-dropdown-target="toggle">
+                Get Started
+              </a>
+              <ul class="dropdown-menu dropdown-menu-md-end" data-dropdown-target="menu"
+                  data-action="mouseleave->dropdown#hideMenu">
+                <%= link_to 'Log In', new_session_path, class: 'dropdown-item' %>
+                <li><hr class="dropdown-divider"></li>
+                <%= link_to 'Sign Up', new_registration_path, class: 'dropdown-item' %>
+              </ul>
+            </div>
+          <% end %>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
