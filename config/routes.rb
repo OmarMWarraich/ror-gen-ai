@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+
   get "account" => "account_manager#index", as: :account_manager
   post '/create_portal_session' => 'account_manager#create_portal_session', as: :create_portal_session
 

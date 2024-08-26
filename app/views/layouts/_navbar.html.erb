@@ -1,24 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:var(--bs-body-color)">
   <div class="container-fluid my-2 justify-content-lg-between">
-    <a class="navbar-brand col-3 mb-2 mb-lg-0" href="/">ArtSmith</a>
+    <a class="navbar-brand col-3 mb-2 mb-lg-0 fs-2 ms-3" href="/">ArtSmith</a>
     <button class="navbar-toggler mb-2 mb-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto w-30 justify-content-between">
-        <!-- Apply mb-2 to each li element for vertical spacing in collapsed view -->
-        <li class="nav-item mx-4 rounded-3 mb-4 mb-lg-0 w-25 text-center mx-auto mx-lg-5" style="background-color: var(--bs-success);">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+      <ul class="navbar-nav me-auto w-30 justify-content-between ">
+        <li class="nav-item mx-4 rounded-4 mb-4 mb-lg-0 w-25 text-center mx-auto mx-lg-4 border border-dark-subtle border-3" style="background-color: var(--bs-success);">
+          <a class="nav-link active fs-3 px-2 py-2 fw-bold" aria-current="page" href="/">Home</a>
         </li>
-        <li class="nav-item mx-4 rounded-3 mb-4 mb-lg-0 w-25 text-center mx-auto mx-lg-5" style="background-color: var(--bs-success);">
+        <li class="nav-item mx-4 mb-4 mb-lg-0 w-25 rounded-4 text-center mx-auto mx-lg-4 border border-dark-subtle border-3" style="background-color: var(--bs-success);">
           <div data-controller="dropdown">
-            <a class="nav-link dropdown-toggle rounded-3" href="#" role="button" style="background-color: var(--bs-success);"
+            <a class="nav-link dropdown-toggle fs-3 px-2 rounded-4 py-2 pe-5 me-5 fw-bold" href="#" role="button" style="background-color: var(--bs-success);"
                data-action="mouseenter->dropdown#showMenu mouseleave->dropdown#hideMenu"
               data-bs-toggle="dropdown" aria-expanded="false"
               data-dropdown-target="toggle">
               Features
             </a>
-            <ul class="dropdown-menu dropdown-menu-end mb-4 mb-lg-0 text-center mx-auto mx-lg-5" data-dropdown-target="menu"
+            <ul class="dropdown-menu dropdown-menu-end mb-4 mb-lg-0 text-center mx-auto bg-success" data-dropdown-target="menu"
                 data-action="mouseleave->dropdown#hideMenu" style="position: absolute; left: 0; width: 100vw;">
               <% @features = [
                     {
@@ -50,10 +49,10 @@
                 <div class="row justify-content-center">
                   <div class="col-12 d-flex flex-wrap justify-content-center gap-4">
                     <% @features.each do |i| %>
-                      <div class="card text-white bg-primary" style="min-width: 18rem; flex: 1 1 18rem;">
-                        <div class="card-header"><%= i[:name] %></div>
+                      <div class="card text-white bg-dark" style="min-width: 18rem; flex: 1 1 18rem;">
+                        <div class="card-header fs-3"><%= i[:name] %></div>
                         <div class="card-body">
-                          <p class="card-text"><%= i[:description] %></p>
+                          <p class="card-text fs-4"><%= i[:description] %></p>
                         </div>
                       </div>
                     <% end %>
@@ -63,33 +62,33 @@
             </ul>
           </div>
         </li>
-        <li class="nav-item rounded-3 mb-4 mb-lg-0 w-25 text-center mx-auto mx-lg-5" style="background-color: var(--bs-success);">
-          <a class="nav-link" href="/pricing">Pricing</a>
+        <li class="nav-item rounded-4 mb-4 mb-lg-0 w-25 text-center mx-auto mx-lg-4 border border-dark-subtle border-3 hover-text-dark focus-bg-warning" style="background-color: var(--bs-success);">
+          <a class="nav-link px-2 py-1 fs-3 fw-bold hover-text-dark focus-bg-warning" href="/pricing">Pricing</a>
         </li>
       </ul>
-      <form class="d-flex mb-4 mb-lg-0 w-50 text-center mx-auto mx-lg-5" role="search">
-        <input class="form-control me-2 text-center" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex mb-4 mb-lg-0 w-50 px-2 py-2 fw-bold text-center mx-auto mx-lg-4" role="search">
+        <input class="form-control me-2 text-center fs-3" type="search" placeholder="Search" aria-label="Search">
       </form>
-      <ul class="navbar-nav mb-4 mb-lg-0 w-25 text-center mx-auto mx-lg-5">
-        <li class="nav-item dropdown">
+      <ul class="navbar-nav mb-4 mb-lg-0 w-25 text-center mx-auto mx-lg-4">
+        <li class="nav-item dropdown rounded-4 px-2 py-2 fw-bold">
           <% if user_signed_in? %>
-            <a class="nav-link dropdown-toggle rounded-3" href="/account" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: var(--bs-success);">
+            <a class="nav-link dropdown-toggle rounded-4 fs-3 border border-dark-subtle border-3" href="/account" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: var(--bs-success);">
               <%= current_user.email.gsub(/@.*/, '') %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <%= link_to 'Edit Password', edit_password_change_path, class: 'dropdown-item' %>
+              <%= link_to 'Edit Password', edit_password_change_path, class: 'dropdown-item fs-3' %>
               <li><hr class="dropdown-divider"></li>
-              <%= link_to 'Log out', session_path, class: 'dropdown-item', data: { turbo_method: :delete } %>
+              <%= link_to 'Log out', session_path, class: 'dropdown-item fs-3', data: { turbo_method: :delete } %>
             </ul>
           <% else %>
             <div data-controller="dropdown">
-              <a class="nav-link dropdown-toggle rounded-3" href="#" role="button" style="background-color: var(--bs-success);"
+              <a class="nav-link dropdown-toggle rounded-4 -px-5 py-2 fw-bold fs-3 border border-dark-subtle border-3" href="#" role="button" style="background-color: var(--bs-success);"
                 data-action="mouseenter->dropdown#showMenu mouseleave->dropdown#hideMenu"
                 data-bs-toggle="dropdown" aria-expanded="false"
                 data-dropdown-target="toggle">
                 Get Started
               </a>
-              <ul class="dropdown-menu dropdown-menu-md-end" data-dropdown-target="menu"
+              <ul class="dropdown-menu dropdown-menu-md-end w-100 bg-success"  data-dropdown-target="menu"
                   data-action="mouseleave->dropdown#hideMenu">
                 <%= link_to 'Log In', new_session_path, class: 'dropdown-item' %>
                 <li><hr class="dropdown-divider"></li>

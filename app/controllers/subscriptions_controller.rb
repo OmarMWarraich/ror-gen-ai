@@ -1,9 +1,10 @@
 class SubscriptionsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   def index
-    if current_user.subscriptions.active.any?
-      redirect_to account_manager_url and return
-    end
+    # if current_user.subscriptions.active.any?
+    #   redirect_to account_manager_url and return
+    # end
+
   end
 
   def success
