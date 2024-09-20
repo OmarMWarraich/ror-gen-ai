@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.0"
+ruby "3.3.5"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
@@ -78,7 +78,7 @@ gem "sassc-rails", "~> 2.1"
 gem 'font-awesome-sass', '~> 5.15.1'
 
 # gem 'ruby-stableDiffusion', path: '/home/owa/Docs/ror/ruby-stablediffusion/'
-gem 'ruby-stableDiffusion', github: 'OmarMWarraich/ruby-stablediffusion', ref: '87a3422'
+gem 'ruby-stableDiffusion', github: 'OmarMWarraich/ruby-stablediffusion', ref: 'a9a30a8'
 
 gem "sidekiq"
 

@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/OmarMWarraich/ruby-stablediffusion.git
-  revision: 87a3422430710d757d1b2ad2b9e2ec11396ee030
-  ref: 87a3422
+  revision: a9a30a8b27f53b35d96ebc613b39ae7983a76902
+  ref: a9a30a8
   specs:
     ruby-stableDiffusion (0.1.0)
       json (~> 2.1, >= 2.1.0)
@@ -355,7 +355,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.3.0p0
+   ruby 3.3.5p100
 
 BUNDLED WITH
    2.5.11
