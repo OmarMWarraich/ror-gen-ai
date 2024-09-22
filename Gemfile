@@ -78,7 +78,7 @@ gem "sassc-rails", "~> 2.1"
 gem 'font-awesome-sass', '~> 5.15.1'
 
 # gem 'ruby-stableDiffusion', path: '/home/owa/Docs/ror/ruby-stablediffusion/'
-gem 'ruby-stableDiffusion', github: 'OmarMWarraich/ruby-stablediffusion', ref: 'a9a30a8'
+gem 'ruby-stableDiffusion', github: 'OmarMWarraich/ruby-stablediffusion', ref: '145185d'
 
 gem "sidekiq"
 
