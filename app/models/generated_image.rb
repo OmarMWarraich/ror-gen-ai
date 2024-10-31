@@ -39,7 +39,7 @@ class GeneratedImage < ApplicationRecord
   def broadcast_to_main_image
     broadcast_update_to(
       "#{dom_id(user)}_main_image",
-      partial: "generated_images/display_main_image",
+      partial: "/generated_images/display_main_image",
       locals: {
         scroll_to: true,
         generated_image: self
@@ -47,7 +47,7 @@ class GeneratedImage < ApplicationRecord
       target: "image_maker"
     )
   end
-
+  
   def broadcast_to_gallery
     broadcast_prepend_to(
       "#{dom_id(user)}_gallery",

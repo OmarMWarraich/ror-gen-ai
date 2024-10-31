@@ -20,12 +20,13 @@
 #
 class ProgressHolder < ApplicationRecord
   include ActionView::RecordIdentifier
+  
   belongs_to :user
 
   def broadcast_updated(user_id, task_ref, original_prompt, style_template, result)
     progress_holder = ProgressHolder.find_or_create_by(task_ref:) do |ph|
       ph.user_id = user_id
-      ph.live_preview_id = result.progress.positive? ? result.id_live_preview : -1
+      ph.live_preview_id = result.progress.present? && result.progress.positive? ? result.id_live_preview : -1
     end
 
     user = User.find(user_id)
@@ -36,8 +37,8 @@ class ProgressHolder < ApplicationRecord
       partial: "txt2_imgs/loading_progress",
       locals: {
         scroll_to: true,
-        original_prompt:,
-        style_template:,
+        original_prompt: original_prompt,
+        style_template: style_template,
         result: JSON.parse(result.to_json)
       },
       target: "image_maker"

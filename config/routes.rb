@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   post "stripe_webhook" => "stripe_webhooks#webhook"
 
-  get "pricing" => "subscriptions#index"
+  get "pricing" => "subscriptions#index", as: :pricing
   post "create_checkout_session" => "subscriptions#create_checkout_session", as: :create_checkout_session
   get "success" => "subscriptions#success"
 

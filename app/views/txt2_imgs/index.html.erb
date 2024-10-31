@@ -1,12 +1,12 @@
 <div class='container-fluid p-2 m-2 h-100'>
   <div class='row'>
     <div class='col-md-3'>
-      <div>
-        <%= render partial: 'settings'%>
-      </div>
+      <h5 class="border-bottom pb-2 mb-2"><i class="fas fa-duotone fa-gear me-1 fa-rotate-90" style="--fa-rotate-angle:90;"></i>Settings</h5>
+      <%= render partial: "settings" %>
     </div>
     <div class='col-md-7'>
-      <div id='image_holder' class='text-center card h-100 p-2'>
+      <h3 class="border-bottom pb-2 mb-2"><i class="fas fa-duotone fa-server me-2"></i>Working Area</h3>
+      <div id='image_holder' class="text-center h-100 p-2">
         <%= turbo_stream_from "#{dom_id(current_user)}_main_image" %>
         <turbo-frame id="full_image_area">
           <turbo-frame id="image_maker">
@@ -16,10 +16,10 @@
       </div>
     </div>
     <div class='col-md-2'>
-      <h5 class='border-bottom pb-2 mb-2'><i class="fas fa-duotone fa-images"></i> Gallery</h5>
+      <h5 class="border-bottom pb-2 mb-2"><i class="fas fa-duotone fa-images me-1"></i> Gallery</h5>
       <%= turbo_stream_from "#{dom_id(current_user)}_gallery" %>
       <div id="main_gallery" class="row">
-        <%= render partial: '/txt2_imgs/gallery', collection: @gallery %>
+        <%= render partial: "/txt2_imgs/gallery", collection: @gallery %>
       </div>
     </div>
   </div>

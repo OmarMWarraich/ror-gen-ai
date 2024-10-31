@@ -1,25 +1,21 @@
+# hold the image creation for the form
 class ImageMaker
   include ActiveModel::Model
 
-  attr_accessor :prompt, :negative_prompt, :sd_model, :batch_size, :steps, :cfg_scale
-  attr_accessor :vae, :sampler_name, :seed, :width, :height, :random_seed, :aspect_ratio
+  attr_accessor :prompt, :negative_prompt, :sd_model, :steps, :seed, :random_seed
+  attr_accessor :width, :height, :sampler_name, :style_template, :aspect_ratio
 
-  def initialize(attributes = {})
-    # Default values
-    @prompt          = attributes[:prompt]          || ''
-    @negative_prompt = attributes[:negative_prompt] || ''
-    @sd_model        = attributes[:sd_model]        || 'BigGAN-512'
-    @batch_size      = attributes[:batch_size]      || 1
-    @steps           = attributes[:steps]           || 20
-    @cfg_scale       = attributes[:cfg_scale]       || 7.5
-    @vae             = attributes[:vae]             || 'default_vae'
-    @sampler_name    = attributes[:sampler_name]    || 'Euler '
-    @seed            = attributes[:seed]            || -1
-    @width           = attributes[:width]           || 512
-    @height          = attributes[:height]          || 512
-    @random_seed     = attributes[:random_seed]     || 1
-    @aspect_ratio    = attributes[:aspect_ratio]    || '1:1'
-
-    super(attributes)
+  def initialize(params = {})
+    @prompt = params[:prompt] || ""
+    @negative_prompt = params[:negative_prompt] || ""
+    @sd_model = params[:sd_model] || "dall-e"
+    @steps = params[:steps] || 32
+    @seed = params[:seed] || -1
+    @random_seed = params[:random_seed] || true
+    @width = params[:width] || 512
+    @height = params[:height] || 512
+    @sampler_name = params[:sampler_name] || "Euler"
+    @style_template = params[:style_template] || "default"
+    @aspect_ratio = params[:aspect_ratio] || "1:1" #square
   end
 end
